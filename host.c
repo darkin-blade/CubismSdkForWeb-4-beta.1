@@ -7,7 +7,12 @@ int main()
 {
   dest_fd = open(dest_path, O_RDWR);
   // assert(dest_fd != -1);
-  CYAN("%s", insert_text[0]);
+
+  int i = 0;
+  for (i = 0; i < 53; i ++) {// 合并文件
+    readfile(src_path[i]);
+    inserttext(i);// 插入其他内容
+  }
 }
 
 void readfile(const char *path)
@@ -33,4 +38,20 @@ void sendfile(int fd, char *text, int size)
     size -= temp_size;
     text += temp_size;
   }
+}
+
+void inserttext(int num)
+{
+  memset(read_text, 0, sizeof(read_text));
+
+  if (num == 0) {// 第一个文件
+    sprintf(read_text, "({\n\n\"%s\":\n", insert_text[num]);
+  } else if (num == 52) {// 最后一个文件
+    sprintf(read_text, "\n\n});");
+  } else {
+    assert(num > 0 && num < 52);
+    sprintf(read_text, ",\n\n\"%s\":\n", insert_text[num]);// 注意,每读取一个文件,向其后面插入的是后一文件的文件名
+  }
+
+  sendfile(dest_fd, read_text, strlen(read_text));
 }

@@ -120,3 +120,4 @@ const char *insert_text[] = {
 
 void readfile(const char *path);
 void sendfile(int fd, char *text, int size);
+void inserttext(int num);// 插入除js外的文本内容
