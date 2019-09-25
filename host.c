@@ -18,6 +18,11 @@ int main()
 void readfile(const char *path)
 {
   int src_fd = open(path, O_RDONLY);
+  if (src_fd == -1) {
+    MAGENTA("%s not found", path);
+    exit(1);
+  }
+
   int src_len = lseek(src_fd, 0, SEEK_END);// 源文件长度
   lseek(src_fd, 0, SEEK_SET);
 
@@ -45,7 +50,7 @@ void inserttext(int num)
   memset(read_text, 0, sizeof(read_text));
 
   if (num == 0) {// 第一个文件
-    sprintf(read_text, "({\n\n\"%s\":\n", insert_text[num]);
+    sprintf(read_text, "\n({\n\n\"%s\":\n", insert_text[num]);
   } else if (num == 52) {// 最后一个文件
     sprintf(read_text, "\n\n});");
   } else {
