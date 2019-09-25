@@ -6,7 +6,8 @@ int dest_fd = 0;
 int main()
 {
   dest_fd = open(dest_path, O_RDWR);
-  assert(dest_fd != -1);
+  // assert(dest_fd != -1);
+  CYAN("%s", insert_text[0]);
 }
 
 void readfile(const char *path)
