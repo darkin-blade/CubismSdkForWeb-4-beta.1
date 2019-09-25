@@ -5,8 +5,8 @@ int dest_fd = 0;
 
 int main()
 {
-  dest_fd = open(dest_path, O_RDWR);
-  // assert(dest_fd != -1);
+  dest_fd = open(dest_path, O_RDWR | O_CREAT);// 如果没有则创建
+  assert(dest_fd != -1);
 
   int i = 0;
   for (i = 0; i < 53; i ++) {// 合并文件
