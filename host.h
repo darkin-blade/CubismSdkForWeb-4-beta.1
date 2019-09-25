@@ -122,7 +122,7 @@ const char *insert_text[] = {
   "./Sample/TypeScript/Demo/src/lappview.ts",// 49
   "./Sample/TypeScript/Demo/src/main.ts",// 50
   "./Sample/TypeScript/Demo/src/touchmanager.ts",// 51
-  "./node_modules/whatwg-fetch.js"// 52
+  "./node_modules/whatwg-fetch/fetch.js"// 52
 };
 
 void readfile(const char *path);
