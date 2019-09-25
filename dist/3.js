@@ -1,3 +1,7 @@
+/*!********************************************!*\
+  !*** ./Framework/cubismframeworkconfig.ts ***!
+  \********************************************/
+/*! exports provided: CSM_LOG_LEVEL_VERBOSE, CSM_LOG_LEVEL_DEBUG, CSM_LOG_LEVEL_INFO, CSM_LOG_LEVEL_WARNING, CSM_LOG_LEVEL_ERROR, CSM_LOG_LEVEL_OFF, CSM_LOG_LEVEL */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
     "use strict";
@@ -40,4 +44,4 @@
     var CSM_LOG_LEVEL = CSM_LOG_LEVEL_VERBOSE;
     
     
-    /***/ }) 
+    /***/ })

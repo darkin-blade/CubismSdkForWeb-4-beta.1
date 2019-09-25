@@ -12456,7 +12456,7 @@ var LAppModel = /** @class */ (function (_super) {
     LAppModel.prototype.preLoadMotionGroup = function (group) {
         var _this = this;
         var _loop_3 = function (i) {
-            // ex) idle_0
+            // ex idle_0
             var name_3 = CubismString.getFormatedString("{0}_{1}", group, i);
             var path = this_2._modelSetting.getMotionFileName(group, i);
             path = this_2._modelHomeDir + path;

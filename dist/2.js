@@ -1,3 +1,7 @@
+/*!***********************************************!*\
+  !*** ./Framework/cubismdefaultparameterid.ts ***!
+  \***********************************************/
+/*! exports provided: Live2DCubismFramework */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
     "use strict";
@@ -69,6 +73,4 @@
     })(Live2DCubismFramework || (Live2DCubismFramework = {}));
     
     
-    /***/ })
-
-       
+    /***/ })    
