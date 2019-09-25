@@ -83,4 +83,4 @@
   })(Live2DCubismFramework || (Live2DCubismFramework = {}));
   
   
-  /***/ })  
+  /***/ })
