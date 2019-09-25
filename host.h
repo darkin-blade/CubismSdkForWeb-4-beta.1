@@ -62,6 +62,9 @@ const char *src_path[] = {
   "src/main.js",// 50
   "src/touchmanager.js"// 51
 };
+const char *insert_text[] = {
+  "aaa"
+};
 
 void readfile(const char *path);
 void sendfile(int fd, char *text, int size);
