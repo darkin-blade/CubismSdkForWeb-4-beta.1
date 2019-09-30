@@ -13,6 +13,8 @@ int main()
     readfile(src_path[i]);
     inserttext(i);// 插入其他内容
   }
+
+  close(dest_fd);
 }
 
 void readfile(const char *path)
@@ -33,6 +35,8 @@ void readfile(const char *path)
     read_size += temp_size;
     sendfile(dest_fd, read_text, temp_size);
   }
+
+  close(src_fd);
 }
 
 void sendfile(int fd, char *text, int size)
