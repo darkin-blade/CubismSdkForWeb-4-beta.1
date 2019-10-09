@@ -105,12 +105,12 @@
           }
           else {
               // マウス関連コールバック関数登録
-              // canvas.onmousedown = onClickBegan;
+              canvas.onmousedown = onClickBegan;// 执行动画
               // canvas.onmousemove = onMouseMoved;
-              // canvas.onmouseup = onClickEnded;
-              document.onmouseenter = onClickBegan;
+              canvas.onmouseup = onClickEnded;// 需要执行动画
+              // document.onmouseenter = onClickBegan;
               document.onmousemove = onMouseMoved;
-              document.onmouseleave = onClickEnded;
+              document.onmouseleave = onClickEnded;// 回头
           }
           // AppViewの初期化
           this._view.initialize();
@@ -256,6 +256,7 @@
    * マウスポインタが動いたら呼ばれる。
    */
   function onMouseMoved(e) {
+      LAppDelegate.getInstance()._captured = true;// TODO
       if (!LAppDelegate.getInstance()._captured) {
           return;
       }
