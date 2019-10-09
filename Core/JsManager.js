@@ -15,9 +15,11 @@ var JsMgr = {
 var need_tips = 1;
 var need_button = 1;
 
-$(document).ready(function() {
+(function() {// 必须立即执行
   console.log("js manager");
-});
+  divCreate(totalNum);
+  totalNum ++;
+})();
 
 function divCreate(num)
 {
@@ -43,4 +45,13 @@ function divCreate(num)
   }
 
   document.body.appendChild(tempDrag);// 添加至body
+  console.log("create canvas");
+  myDrag();
+}
+
+function myDrag()
+{// 使模型能够拖拽
+  $(".drag").draggable({
+    containment: document.body
+  });
 }

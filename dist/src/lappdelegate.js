@@ -80,7 +80,7 @@
        */
       LAppDelegate.prototype.initialize = function () {
           // キャンバスの取得
-          canvas = document.getElementById("SAMPLE");
+          canvas = document.getElementById("glcanvas_0");// TODO
           // glコンテキストを初期化
           gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
           if (!gl) {
