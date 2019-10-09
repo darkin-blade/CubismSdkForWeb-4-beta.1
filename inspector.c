@@ -125,7 +125,7 @@ void inspect()
 
 void call_back()
 {
-  GREEN("%s %d", __func__, __LINE__);
+  system("make combine");
 }
 
 void end_watch(int signum)

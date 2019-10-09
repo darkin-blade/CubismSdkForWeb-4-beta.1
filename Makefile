@@ -5,7 +5,7 @@ combine:
 host:
 	make combine
 	gcc inspector.c -o i
-	./i
+	./i ./dist
 
 clean:
 	rm -f c i
