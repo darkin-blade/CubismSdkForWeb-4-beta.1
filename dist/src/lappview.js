@@ -104,12 +104,12 @@
        * 画像の初期化を行う。
        */
       LAppView.prototype.initializeSprite = function () {
-          var _this = this;
-          var width = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["canvas"].width;
-          var height = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["canvas"].height;
-          var textureManager = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["LAppDelegate"].getInstance().getTextureManager();
-          var resourcesPath = _lappdefine__WEBPACK_IMPORTED_MODULE_3__["LAppDefine"].ResourcesPath;
-          var imageName = "";
+        //   var _this = this;
+        //   var width = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["canvas"].width;
+        //   var height = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["canvas"].height;
+        //   var textureManager = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["LAppDelegate"].getInstance().getTextureManager();
+        //   var resourcesPath = _lappdefine__WEBPACK_IMPORTED_MODULE_3__["LAppDefine"].ResourcesPath;
+        //   var imageName = "";
         //   // 背景画像初期化
         //   imageName = _lappdefine__WEBPACK_IMPORTED_MODULE_3__["LAppDefine"].BackImageName;
         //   // 非同期なのでコールバック関数を作成
