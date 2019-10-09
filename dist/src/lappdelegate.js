@@ -110,6 +110,7 @@
               // canvas.onmouseup = onClickEnded;
               document.onmouseenter = onClickBegan;
               document.onmousemove = onMouseMoved;
+              document.onmouseleave = onClickEnded;
           }
           // AppViewの初期化
           this._view.initialize();
@@ -276,10 +277,11 @@
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
       }
-      var rect = e.target.getBoundingClientRect();
-      var posX = e.clientX - rect.left;
-      var posY = e.clientY - rect.top;
-      LAppDelegate.getInstance()._view.onTouchesEnded(posX, posY);
+      // var rect = e.target.getBoundingClientRect();
+      // var posX = e.clientX - rect.left;
+      // var posY = e.clientY - rect.top;
+      // LAppDelegate.getInstance()._view.onTouchesEnded(posX, posY);
+      LAppDelegate.getInstance()._view.onTouchesEnded(0, 0);
   }
   /**
    * タッチしたときに呼ばれる。

@@ -93,7 +93,6 @@
        * @param y 画面のY座標
        */
       LAppLive2DManager.prototype.onDrag = function (x, y) {
-          console.log("LAppLive2DManager onDrag");
           for (var i = 0; i < this._models.getSize(); i++) {
               var model = this.getModel(i);
               if (model) {
