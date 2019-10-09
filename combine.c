@@ -15,6 +15,7 @@ int main()
   }
 
   close(dest_fd);
+  MAGENTA("finish");
 }
 
 void readfile(const char *path)
@@ -43,7 +44,9 @@ void sendfile(int fd, char *text, int size)
 {
   while (size > 0) {
     int temp_size = write(fd, text, size);
-    if (temp_size <= 0) return;// TODO
+    if (temp_size <= 0) {// TODO
+      MAGENTA("error");
+    }
     size -= temp_size;
     text += temp_size;
   }

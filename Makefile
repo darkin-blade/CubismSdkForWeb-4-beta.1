@@ -1,4 +1,5 @@
 combine:
+	rm -f ./dist/dest.js
 	gcc combine.c -o c
 	./c
 
