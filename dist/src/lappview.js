@@ -110,27 +110,27 @@
           var textureManager = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["LAppDelegate"].getInstance().getTextureManager();
           var resourcesPath = _lappdefine__WEBPACK_IMPORTED_MODULE_3__["LAppDefine"].ResourcesPath;
           var imageName = "";
-          // 背景画像初期化
-          imageName = _lappdefine__WEBPACK_IMPORTED_MODULE_3__["LAppDefine"].BackImageName;
-          // 非同期なのでコールバック関数を作成
-          var initBackGroundTexture = function (textureInfo) {
-              var x = width * 0.5;
-              var y = height * 0.5;
-              var fwidth = textureInfo.width * 2.0;
-              var fheight = height * 0.95;
-              _this._back = new _lappsprite__WEBPACK_IMPORTED_MODULE_6__["LAppSprite"](x, y, fwidth, fheight, textureInfo.id);
-          };
-          textureManager.createTextureFromPngFile(resourcesPath + imageName, false, initBackGroundTexture);
-          // 歯車画像初期化
-          imageName = _lappdefine__WEBPACK_IMPORTED_MODULE_3__["LAppDefine"].GearImageName;
-          var initGearTexture = function (textureInfo) {
-              var x = width - textureInfo.width * 0.5;
-              var y = height - textureInfo.height * 0.5;
-              var fwidth = textureInfo.width;
-              var fheight = textureInfo.height;
-              _this._gear = new _lappsprite__WEBPACK_IMPORTED_MODULE_6__["LAppSprite"](x, y, fwidth, fheight, textureInfo.id);
-          };
-          textureManager.createTextureFromPngFile(resourcesPath + imageName, false, initGearTexture);
+        //   // 背景画像初期化
+        //   imageName = _lappdefine__WEBPACK_IMPORTED_MODULE_3__["LAppDefine"].BackImageName;
+        //   // 非同期なのでコールバック関数を作成
+        //   var initBackGroundTexture = function (textureInfo) {
+        //       var x = width * 0.5;
+        //       var y = height * 0.5;
+        //       var fwidth = textureInfo.width * 2.0;
+        //       var fheight = height * 0.95;
+        //       _this._back = new _lappsprite__WEBPACK_IMPORTED_MODULE_6__["LAppSprite"](x, y, fwidth, fheight, textureInfo.id);
+        //   };
+        //   textureManager.createTextureFromPngFile(resourcesPath + imageName, false, initBackGroundTexture);
+        //   // 歯車画像初期化
+        //   imageName = _lappdefine__WEBPACK_IMPORTED_MODULE_3__["LAppDefine"].GearImageName;
+        //   var initGearTexture = function (textureInfo) {
+        //       var x = width - textureInfo.width * 0.5;
+        //       var y = height - textureInfo.height * 0.5;
+        //       var fwidth = textureInfo.width;
+        //       var fheight = textureInfo.height;
+        //       _this._gear = new _lappsprite__WEBPACK_IMPORTED_MODULE_6__["LAppSprite"](x, y, fwidth, fheight, textureInfo.id);
+        //   };
+        //   textureManager.createTextureFromPngFile(resourcesPath + imageName, false, initGearTexture);
           // シェーダーを作成
           if (this._programId == null) {
               this._programId = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["LAppDelegate"].getInstance().createShader();
@@ -176,10 +176,10 @@
                   _lapppal__WEBPACK_IMPORTED_MODULE_7__["LAppPal"].printLog("[APP]touchesEnded x: {0} y: {1}", x, y);
               }
               live2DManager.onTap(x, y);
-              // 歯車にタップしたか
-              if (this._gear.isHit(pointX, pointY)) {
-                  live2DManager.nextScene();
-              }
+            //   // 歯車にタップしたか
+            //   if (this._gear.isHit(pointX, pointY)) {
+            //       live2DManager.nextScene();
+            //   }
           }
       };
       /**
