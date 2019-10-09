@@ -1,12 +1,11 @@
 combine:
 	gcc combine.c -o c
 	./c
-	rm -f c
 
 host:
 	make combine
-	gcc host.c -o h
-	./h
+	gcc inspector.c -o i
+	./i
 
 clean:
-	rm -f c h
+	rm -f c i
