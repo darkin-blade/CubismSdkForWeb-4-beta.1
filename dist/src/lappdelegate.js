@@ -105,9 +105,11 @@
           }
           else {
               // マウス関連コールバック関数登録
-              canvas.onmousedown = onClickBegan;
-              canvas.onmousemove = onMouseMoved;
-              canvas.onmouseup = onClickEnded;
+              // canvas.onmousedown = onClickBegan;
+              // canvas.onmousemove = onMouseMoved;
+              // canvas.onmouseup = onClickEnded;
+              document.onmouseenter = onClickBegan;
+              document.onmousemove = onMouseMoved;
           }
           // AppViewの初期化
           this._view.initialize();
@@ -283,7 +285,6 @@
    * タッチしたときに呼ばれる。
    */
   function onTouchBegan(e) {
-      console.log("lappdelegate onTouchBegan");
       if (!LAppDelegate.getInstance()._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
