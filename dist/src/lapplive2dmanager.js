@@ -107,6 +107,9 @@
        * @param y 画面のY座標
        */
       LAppLive2DManager.prototype.onTap = function (x, y) {
+          var scale_rate = _lappdefine__WEBPACK_IMPORTED_MODULE_3__["LAppDefine"].ScaleRate;
+          x /= scale_rate;
+          y /= scale_rate;
           console.log("LAppLive2DManager onTap");
           if (_lappdefine__WEBPACK_IMPORTED_MODULE_3__["LAppDefine"].DebugLogEnable) {
               _lapppal__WEBPACK_IMPORTED_MODULE_4__["LAppPal"].printLog("[APP]tap point: {x: {0} y: {1}}", x.toFixed(2), y.toFixed(2));
