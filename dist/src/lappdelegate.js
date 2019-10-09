@@ -135,6 +135,13 @@
        * 実行処理。
        */
       LAppDelegate.prototype.run = function () {
+          // 自定义切换模型
+          var btnChange = document.getElementById("btnChange");
+          btnChange.addEventListener("click", function () {
+            var live2DManager = _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_5__["LAppLive2DManager"].getInstance();
+            live2DManager.nextScene();
+          });
+
           var _this = this;
           // メインループ
           var loop = function () {
@@ -145,7 +152,7 @@
               // 時間更新
               _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].updateTime();
               // 画面の初期化
-              gl.clearColor(0.0, 0.0, 0.0, 1.0);
+              gl.clearColor(0.0, 0.0, 0.0, 0.0);// 背景颜色
               // 深度テストを有効化
               gl.enable(gl.DEPTH_TEST);
               // 近くにある物体は、遠くにある物体を覆い隠す
