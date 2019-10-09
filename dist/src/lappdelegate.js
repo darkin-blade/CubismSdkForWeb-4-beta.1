@@ -240,15 +240,15 @@
   }());
   
   /**
-   * 回头   
+   * 回头,不触发点击事件   
    */
   function onMouseLeave(e) {
-    console.log("onMouseLeave");
     if (!LAppDelegate.getInstance()._view) {
         _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
         return;
     }
-    LAppDelegate.getInstance()._view.onTouchesMoved(0, 0);
+    var live2DManager = _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_5__["LAppLive2DManager"].getInstance();
+    live2DManager.onDrag(0.0, 0.0);
   }
   /**
    * クリックしたときに呼ばれる。
