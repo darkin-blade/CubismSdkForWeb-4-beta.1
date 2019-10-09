@@ -135,7 +135,10 @@
           var width, height;
           width = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["canvas"].width;
           height = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["canvas"].height;
-          projection.scale(1.0, width / height);
+        //   console.log("LAppLive2DManager onUpdate: " + width + ", " + height);
+          var scale_rate = _lappdefine__WEBPACK_IMPORTED_MODULE_3__["LAppDefine"].ScaleRate;
+          projection.scale(scale_rate, width / height * scale_rate);// 调整放缩倍数
+          // projection.scale(1.0, width / height * 1);
           if (this._viewMatrix != null) {
               projection.multiplyByMatrix(this._viewMatrix);
           }

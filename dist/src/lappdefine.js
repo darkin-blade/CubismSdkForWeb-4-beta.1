@@ -20,6 +20,9 @@
    */
   var LAppDefine;
   (function (LAppDefine) {
+      // 自定义参数
+      LAppDefine.ScaleRate = 2.0;// 模型放缩比例
+
       // 画面
       LAppDefine.ViewMaxScale = 2.0;
       LAppDefine.ViewMinScale = 0.8;
@@ -43,8 +46,8 @@
       LAppDefine.ModelDir = [
         "Rice",
         "Natori",
-        "Haru",
         "Hiyori",
+        "Haru",
         "Mark",
       ];
       LAppDefine.ModelDirSize = LAppDefine.ModelDir.length;

@@ -29,7 +29,7 @@
           this._lastTouchDistance = 0.0;
           this._deltaX = 0.0;
           this._deltaY = 0.0;
-          this._scale = 1.0;
+          this._scale = 1.0;// TODO
           this._touchSingle = false;
           this._flipAvailable = false;
       }
