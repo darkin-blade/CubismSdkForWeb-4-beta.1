@@ -239,14 +239,17 @@
       return LAppDelegate;
   }());
   
-  function onMouseLeave() {// 回头
+  /**
+   * 回头   
+   */
+  function onMouseLeave(e) {
+    console.log("onMouseLeave");
     if (!LAppDelegate.getInstance()._view) {
         _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
         return;
     }
-    LAppDelegate.getInstance()._view.onTouchesBegan(0, 0);
+    LAppDelegate.getInstance()._view.onTouchesMoved(0, 0);
   }
-
   /**
    * クリックしたときに呼ばれる。
    */
@@ -255,7 +258,7 @@
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
       }
-      LAppDelegate.getInstance()._captured = true;
+    //   LAppDelegate.getInstance()._captured = true;
       var posX = e.pageX;
       var posY = e.pageY;
       LAppDelegate.getInstance()._view.onTouchesBegan(posX, posY);
@@ -264,10 +267,9 @@
    * マウスポインタが動いたら呼ばれる。
    */
   function onMouseMoved(e) {
-      LAppDelegate.getInstance()._captured = true;// TODO
-      if (!LAppDelegate.getInstance()._captured) {
-          return;
-      }
+    //   if (!LAppDelegate.getInstance()._captured) {// TODO
+    //       return;
+    //   }
       if (!LAppDelegate.getInstance()._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
@@ -281,7 +283,7 @@
    * クリックが終了したら呼ばれる。
    */
   function onClickEnded(e) {
-      LAppDelegate.getInstance()._captured = false;
+    //   LAppDelegate.getInstance()._captured = false;// TODO
       if (!LAppDelegate.getInstance()._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
@@ -300,7 +302,7 @@
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
       }
-      LAppDelegate.getInstance()._captured = true;
+    //   LAppDelegate.getInstance()._captured = true;
       var posX = e.changedTouches[0].pageX;
       var posY = e.changedTouches[0].pageY;
       LAppDelegate.getInstance()._view.onTouchesBegan(posX, posY);
