@@ -283,6 +283,7 @@
    * タッチしたときに呼ばれる。
    */
   function onTouchBegan(e) {
+      console.log("lappdelegate onTouchBegan");
       if (!LAppDelegate.getInstance()._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;

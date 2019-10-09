@@ -93,6 +93,7 @@
        * @param y 画面のY座標
        */
       LAppLive2DManager.prototype.onDrag = function (x, y) {
+          console.log("LAppLive2DManager onDrag");
           for (var i = 0; i < this._models.getSize(); i++) {
               var model = this.getModel(i);
               if (model) {
@@ -107,6 +108,7 @@
        * @param y 画面のY座標
        */
       LAppLive2DManager.prototype.onTap = function (x, y) {
+          console.log("LAppLive2DManager onTap");
           if (_lappdefine__WEBPACK_IMPORTED_MODULE_3__["LAppDefine"].DebugLogEnable) {
               _lapppal__WEBPACK_IMPORTED_MODULE_4__["LAppPal"].printLog("[APP]tap point: {x: {0} y: {1}}", x.toFixed(2), y.toFixed(2));
           }
