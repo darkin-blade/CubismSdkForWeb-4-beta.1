@@ -6,7 +6,12 @@ int dest_fd = 0;
 int main()
 {
   dest_fd = open(dest_path, O_RDWR | O_CREAT);// 如果没有则创建
+  MAGENTA("fd: %d", dest_fd);
   assert(dest_fd != -1);
+
+  if (chmod(dest_path, S_IRWXU | S_IRWXG | S_IRWXO) == -1) {
+    MAGENTA("chmod failed");
+  }
 
   int i = 0;
   for (i = 0; i < 53; i ++) {// 合并文件
