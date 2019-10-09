@@ -19,3 +19,4 @@ void inspect();
 void add_watch(const char *dir_path);// 递归添加所有子目录监视
 void remove_watch();// 结束监视
 void end_watch();
+void call_back();// 文件改变后调用

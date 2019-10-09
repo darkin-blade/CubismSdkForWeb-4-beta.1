@@ -118,7 +118,14 @@ void inspect()
       }
       i += EVENT_SIZE + event->len;
     }
+
+    call_back();
   }
+}
+
+void call_back()
+{
+  GREEN("%s %d", __func__, __LINE__);
 }
 
 void end_watch(int signum)
