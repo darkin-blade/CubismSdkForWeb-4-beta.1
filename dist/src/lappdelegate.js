@@ -261,6 +261,7 @@
    * クリックしたときに呼ばれる。
    */
   function onClickBegan(e) {
+    //   console.log("lappdelegate onClickBegan");
       if (!LAppDelegate.getInstance()._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
@@ -277,6 +278,7 @@
     //   if (!LAppDelegate.getInstance()._captured) {// TODO
     //       return;
     //   }
+    //   console.log("lappdelegate onMouseMoved");
       if (!LAppDelegate.getInstance()._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
@@ -291,6 +293,7 @@
    */
   function onClickEnded(e) {
     //   LAppDelegate.getInstance()._captured = false;// TODO
+    //   console.log("lappdelegate onClickEnded");
       if (!LAppDelegate.getInstance()._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
