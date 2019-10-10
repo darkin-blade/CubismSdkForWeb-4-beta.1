@@ -261,14 +261,18 @@
    * クリックしたときに呼ばれる。
    */
   function onClickBegan(e) {
-    //   console.log("lappdelegate onClickBegan");
       if (!LAppDelegate.getInstance()._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
       }
     //   LAppDelegate.getInstance()._captured = true;
-      var posX = e.pageX;
-      var posY = e.pageY;
+    //   var posX = e.pageX;
+    //   var posY = e.pageY;
+      // 修正鼠标点击位置判定
+      var rect = e.target.getBoundingClientRect();
+      var posX = e.clientX - rect.left;
+      var posY = e.clientY - rect.top;
+      console.log("lappdelegate onClickBegan (" + posX + ", " + posY + ")");
       LAppDelegate.getInstance()._view.onTouchesBegan(posX, posY);
   }
   /**
@@ -278,7 +282,6 @@
     //   if (!LAppDelegate.getInstance()._captured) {// TODO
     //       return;
     //   }
-    //   console.log("lappdelegate onMouseMoved");
       if (!LAppDelegate.getInstance()._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
@@ -286,6 +289,7 @@
       var rect = e.target.getBoundingClientRect();
       var posX = e.clientX - rect.left;
       var posY = e.clientY - rect.top;
+    //   console.log("lappdelegate onMouseMoved (" + posX + ", " + posY + ")");
       LAppDelegate.getInstance()._view.onTouchesMoved(posX, posY);
   }
   /**
@@ -293,7 +297,6 @@
    */
   function onClickEnded(e) {
     //   LAppDelegate.getInstance()._captured = false;// TODO
-    //   console.log("lappdelegate onClickEnded");
       if (!LAppDelegate.getInstance()._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
@@ -301,8 +304,8 @@
       var rect = e.target.getBoundingClientRect();
       var posX = e.clientX - rect.left;
       var posY = e.clientY - rect.top;
+      console.log("lappdelegate onClickEnded (" + posX + ", " + posY + ")");
       LAppDelegate.getInstance()._view.onTouchesEnded(posX, posY);
-    //   LAppDelegate.getInstance()._view.onTouchesEnded(0, 0);
   }
   /**
    * タッチしたときに呼ばれる。
