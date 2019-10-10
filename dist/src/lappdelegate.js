@@ -80,7 +80,7 @@
        */
       LAppDelegate.prototype.initialize = function () {
           // キャンバスの取得
-          canvas = document.getElementById("glcanvas_0");// TODO
+          canvas = document.getElementById("glcanvas_" + "0");// TODO
           // glコンテキストを初期化
           gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
           if (!gl) {
@@ -136,7 +136,7 @@
        */
       LAppDelegate.prototype.run = function () {
           // 自定义切换模型
-          var btnChange = document.getElementById("btnChange");
+          var btnChange = document.getElementById("btnChange_" + "0");
           btnChange.addEventListener("click", function () {
             var live2DManager = _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_5__["LAppLive2DManager"].getInstance();
             live2DManager.nextScene();

@@ -1,0 +1,29 @@
+/**
+ * 核心css文件 
+ */
+
+html,
+body {
+    /* 测试用 */
+    height: 100%;
+}
+
+.drag {
+    position: fixed;
+}
+
+.glcanvas {
+    z-index: 0;
+    bottom: 0px;
+    right: 0px;
+    position: relative;
+}
+
+.btnChange {
+    user-select: none;
+    /* 不能选定 */
+    cursor: pointer;
+    background-color: #eeeeee;
+    text-align: center;
+    width: 100px;
+}

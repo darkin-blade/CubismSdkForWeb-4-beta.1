@@ -27,7 +27,7 @@ function divCreate(num)
   var tempDrag = document.createElement("div");
   tempDrag.id = "drag_" + num;// 标号
   tempDrag.className = "drag";
-
+  
   if (need_tips) {// TODO
     ;
   }
@@ -39,13 +39,23 @@ function divCreate(num)
   tempCanvas.width = 600;
   tempCanvas.height = 600;
   tempDrag.appendChild(tempCanvas);// 添加至拖拽元素
-
+  
   if (need_button) {// TODO
-    ;
+    var tempButton = document.createElement("div");// 按钮对齐用
+    
+    var tempChange = document.createElement("div");
+    tempChange.id = "btnChange_" + num;// 标号
+    tempChange.className = "btnChange";
+    tempChange.textContent = "change";
+    tempButton.appendChild(tempChange);// 添加至按钮组
+    
+    tempDrag.appendChild(tempButton);// 添加至拖拽元素
   }
-
+  
   document.body.appendChild(tempDrag);// 添加至body
-  console.log("create canvas");
+  $("#drag_" + num).css("width", "600px");// TODO
+  $("#drag_" + num).css("height", "600px");// TODO
+
   myDrag();
 }
 
