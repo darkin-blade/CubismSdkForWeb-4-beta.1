@@ -299,7 +299,6 @@
     //   if (!LAppDelegate.getInstance(num)._captured) {// TODO
     //       return;
     //   }
-      console.log("lappdelegate onMouseMoved " + this);
       if (!LAppDelegate.getInstance(num)._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;

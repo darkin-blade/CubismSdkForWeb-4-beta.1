@@ -112,8 +112,9 @@
       /**
        * コンストラクタ
        */
-      function LAppModel() {
-          console.log("LAppModel");
+      function LAppModel(num) {
+          this._num = num;// TODO 多重canvas
+          console.log("LAppModel " + num);
           var _this = _super.call(this) || this;
           _this._modelSetting = null;
           _this._modelHomeDir = null;
@@ -412,7 +413,8 @@
                       }
                   };
                   // 読み込み
-                  _lappdelegate__WEBPACK_IMPORTED_MODULE_14__["LAppDelegate"].getInstance().getTextureManager().createTextureFromPngFile(texturePath, usePremultiply, onLoad);
+                  console.log("LAppModel setupTextures " + _this._num);
+                  _lappdelegate__WEBPACK_IMPORTED_MODULE_14__["LAppDelegate"].getInstance(_this._num).getTextureManager().createTextureFromPngFile(texturePath, usePremultiply, onLoad);
                   this_1.getRenderer().setIsPremultipliedAlpha(usePremultiply);
               };
               var this_1 = this;
