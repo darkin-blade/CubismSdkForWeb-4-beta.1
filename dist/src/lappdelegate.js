@@ -152,7 +152,7 @@
           // 自定义切换模型
           var btnChange = document.getElementById("btnChange_" + "0");
           btnChange.addEventListener("click", function () {
-            var live2DManager = _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_5__["LAppLive2DManager"].getInstance();
+            var live2DManager = _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_5__["LAppLive2DManager"].getInstance(this._num);
             live2DManager.nextScene();
           });
 
@@ -244,6 +244,7 @@
        * Cubism SDKの初期化
        */
       LAppDelegate.prototype.initializeCubism = function () {
+          console.log("LAppDelegate initializeCubism " + this._num);
           // setup cubism
           this._cubismOption.logFunction = _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printMessage;
           this._cubismOption.loggingLevel = _lappdefine__WEBPACK_IMPORTED_MODULE_6__["LAppDefine"].CubismLoggingLevel;
@@ -251,7 +252,7 @@
           // initialize cubism
           Csm_CubismFramework.initialize();
           // load model
-          _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_5__["LAppLive2DManager"].getInstance();
+          _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_5__["LAppLive2DManager"].getInstance(this._num);
           // default proj
           var projection = new Csm_CubismMatrix44();
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].updateTime();
@@ -264,12 +265,12 @@
    * 回头,不触发点击事件   
    */
   function onMouseLeave(e, num) {
-    console.log("lappdelegate onMouseLeave " + this._num);
+    console.log("lappdelegate onMouseLeave " + num);
     if (!LAppDelegate.getInstance(num)._view) {
         _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
         return;
     }
-    var live2DManager = _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_5__["LAppLive2DManager"].getInstance();// TODO 回头的实现
+    var live2DManager = _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_5__["LAppLive2DManager"].getInstance(num);// TODO 回头的实现
     live2DManager.onDrag(0.0, 0.0);
   }
   /**

@@ -28,7 +28,7 @@
   
   
   
-  var s_instance = null;
+  var s_instance = new Array();// TODO 多重canvas
   /**
    * サンプルアプリケーションにおいてCubismModelを管理するクラス
    * モデル生成と破棄、タップイベントの処理、モデル切り替えを行う。
@@ -37,7 +37,10 @@
       /**
        * コンストラクタ
        */
-      function LAppLive2DManager() {
+      function LAppLive2DManager(num) {
+          this._num = num;// TODO 多重canvas
+          console.log("LAppLive2DManager " + num);
+          if (num == null) { num.fuckshit() };
           this._viewMatrix = new Csm_CubismMatrix44();
           this._models = new Csm_csmVector();
           this._sceneIndex = 0;
@@ -49,20 +52,20 @@
        *
        * @return クラスのインスタンス
        */
-      LAppLive2DManager.getInstance = function () {
-          if (s_instance == null) {
-              s_instance = new LAppLive2DManager();
+      LAppLive2DManager.getInstance = function (num) {
+          if (s_instance[num] == null) {
+              s_instance[num] = new LAppLive2DManager(num);// TODO 后者需要num
           }
-          return s_instance;
+          return s_instance[num];
       };
       /**
        * クラスのインスタンス（シングルトン）を解放する。
        */
-      LAppLive2DManager.releaseInstance = function () {
-          if (s_instance != null) {
-              s_instance = void 0;
+      LAppLive2DManager.releaseInstance = function (num) {
+          if (s_instance[num] != null) {
+              s_instance[num] = void 0;
           }
-          s_instance = null;
+          s_instance[num] = null;
       };
       /**
        * 現在のシーンで保持しているモデルを返す。
@@ -167,7 +170,8 @@
        * シーンを切り替える
        * サンプルアプリケーションではモデルセットの切り替えを行う。
        */
-      LAppLive2DManager.prototype.changeScene = function (index) {
+      LAppLive2DManager.prototype.changeScene = function (index) {// 查找模型位置
+          console.log("LAppLive2DManager " + this._num);
           this._sceneIndex = index;
           if (_lappdefine__WEBPACK_IMPORTED_MODULE_3__["LAppDefine"].DebugLogEnable) {
               _lapppal__WEBPACK_IMPORTED_MODULE_4__["LAppPal"].printLog("[APP]model index: {0}", this._sceneIndex);
@@ -180,7 +184,7 @@
           var modelJsonName = _lappdefine__WEBPACK_IMPORTED_MODULE_3__["LAppDefine"].ModelDir[index];
           modelJsonName += ".model3.json";
           this.releaseAllModel();
-          this._models.pushBack(new _lappmodel__WEBPACK_IMPORTED_MODULE_2__["LAppModel"]());
+          this._models.pushBack(new _lappmodel__WEBPACK_IMPORTED_MODULE_2__["LAppModel"](this._num));// TODO
           this._models.at(0).loadAssets(modelPath, modelJsonName);
       };
       return LAppLive2DManager;
