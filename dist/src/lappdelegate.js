@@ -108,22 +108,23 @@
               canvas.ontouchend = onTouchEnded;
               canvas.ontouchcancel = onTouchCancel;
           }
-          else {
-              // マウス関連コールバック関数登録
-              canvas.onmousedown = onClickBegan;// 执行动画
+          else {// TODO 绑定到特定canvas
+              canvas.addEventListener("mousedown", function () {
+                  onClickBegan(window.event, this._num);
+              }, false);
               // canvas.onmousemove = onMouseMoved;
-              canvas.onmouseup = onClickEnded;// 需要执行动画
+              canvas.addEventListener("mouseup", function () {// 需要执行动画
+                onClickEnded(window.event, this._num);
+              }, false);
               // document.onmouseenter = onClickBegan;
-            //   document.onmousemove = onMouseMoved;
 
               document.body.addEventListener("mousemove", function () {
-                  alert(0);
-              }, false);
-              document.body.addEventListener("mousemove", function () {
-                  alert(1);
-              }, false);
+                  onMouseMoved(window.event, this._num);
+              }, false);// 全局鼠标跟随
 
-              document.onmouseleave = onMouseLeave;// 回头
+              document.body.addEventListener("mouseleave", function () {
+                  onMouseLeave(window.event, this._num);
+              }, false);// 回头
           }
           // AppViewの初期化
           this._view.initialize();
