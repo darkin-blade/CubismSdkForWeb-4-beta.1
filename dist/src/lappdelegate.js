@@ -272,7 +272,7 @@
       var rect = e.target.getBoundingClientRect();
       var posX = e.clientX - rect.left;
       var posY = e.clientY - rect.top;
-      console.log("lappdelegate onClickBegan (" + posX + ", " + posY + ")");
+    //   console.log("lappdelegate onClickBegan (" + posX + ", " + posY + ")");
       LAppDelegate.getInstance()._view.onTouchesBegan(posX, posY);
   }
   /**
@@ -286,13 +286,14 @@
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
       }
+      // 修正全局鼠标跟随位置判定
       var tempDrag = document.getElementById("drag_" + "0");// TODO 获取拖拽元素
     //   var rect = document.body.getBoundingClientRect();
     //   var posX = e.clientX - rect.left;
     //   var posY = e.clientY - rect.top;
       var posX = e.clientX - tempDrag.offsetLeft;
       var posY = e.clientY - tempDrag.offsetTop;
-      console.log("lappdelegate onMouseMoved (" + posX + ", " + posY + "), target: " + e.target);
+    //   console.log("lappdelegate onMouseMoved (" + posX + ", " + posY + "), target: " + e.target);
       LAppDelegate.getInstance()._view.onTouchesMoved(posX, posY);
   }
   /**
