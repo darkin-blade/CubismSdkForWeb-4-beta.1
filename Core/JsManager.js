@@ -7,16 +7,14 @@ var totalNum = 0;// 总模型数
 
 window.tips = new Array();// 用于clearInterval(取消无限鸡汤)
 var thisMy = new Array();
-var JsMgr = {
-  loadInterval: 0,// 如果是同时加载,请把interval调大
-}
+var loadInterval = 0;// 如果是同时加载,请把interval调大
 
 // 对于tips以及button的控制
 var need_tips = 1;
 var need_button = 1;
 
 (function() {// 必须立即执行
-  console.log("js manager");
+  console.log("js manager start");
   divCreate(totalNum);
   totalNum ++;
 })();
@@ -65,3 +63,12 @@ function myDrag()
     containment: document.body
   });
 }
+
+// === 针对4.0.0的修改 ===
+
+var main = "caonima";// 全局主函数,此时未定义
+
+$(document).ready(function () {
+  console.log("JsManager document ready");
+  main();
+})

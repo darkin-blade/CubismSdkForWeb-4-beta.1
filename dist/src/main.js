@@ -14,14 +14,15 @@
    * that can be found at https://www.live2d.com/eula/live2d-open-software-license-agreement_en.html.
    */
   
-  var main = function () {
+  console.log("main define");
+  /* var */ main = function () {// 使用JsManager的全局变量,将其改成函数
       // create the application instance
       if (_lappdelegate__WEBPACK_IMPORTED_MODULE_0__["LAppDelegate"].getInstance().initialize() == false) {
           return;
       }
       _lappdelegate__WEBPACK_IMPORTED_MODULE_0__["LAppDelegate"].getInstance().run();
   };
-  main();
+  // main();// 入口函数
   /**
    * 終了時の処理
    */
