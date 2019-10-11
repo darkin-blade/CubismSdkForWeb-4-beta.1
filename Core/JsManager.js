@@ -32,8 +32,8 @@ function divCreate(num)
   var tempCanvas = document.createElement("canvas");
   tempCanvas.id = "glcanvas_" + num;// 标号
   tempCanvas.className = "glcanvas";
-  tempCanvas.width = 600;
-  tempCanvas.height = 600;
+  tempCanvas.width = 600 + num;
+  tempCanvas.height = 600 + num;
   tempDrag.appendChild(tempCanvas);// 添加至拖拽元素
   
   if (need_button) {// TODO
@@ -70,8 +70,8 @@ $(document).ready(function () {
   console.log("JsManager document ready");
   divCreate(0);
   main(0);
-  // divCreate(1);
-  // main(1);
+  divCreate(1);
+  main(1);
   // main(totalNum);
   // totalNum ++;
 })

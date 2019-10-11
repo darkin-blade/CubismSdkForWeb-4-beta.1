@@ -138,10 +138,15 @@
        * モデルの更新処理及び描画処理を行う
        */
       LAppLive2DManager.prototype.onUpdate = function () {
+        //   console.log("LAppLive2DManager onUpdate " + this._num);
           var projection = new Csm_CubismMatrix44();
           var width, height;
-          width = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["canvas"].width;
-          height = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["canvas"].height;
+          var tempCanvas = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["canvas"];
+        //   console.log(tempCanvas);
+          width = tempCanvas[this._num].width;
+          height = tempCanvas[this._num].height;
+        //   width = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["canvas"].width;
+        //   height = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["canvas"].height;
         //   console.log("LAppLive2DManager onUpdate: " + width + ", " + height);
           var scale_rate = _lappdefine__WEBPACK_IMPORTED_MODULE_3__["LAppDefine"].ScaleRate;
           projection.scale(scale_rate, width / height * scale_rate);// 调整放缩倍数

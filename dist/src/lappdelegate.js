@@ -33,9 +33,9 @@
   
   
   
-  var canvas = null;
+  var canvas = new Array();
   var s_instance = new Array();
-  var gl = null;
+  var gl = new Array();
   var frameBuffer = null;
   /**
    * アプリケーションクラス。
@@ -83,38 +83,40 @@
        * APPに必要な物を初期化する。
        */
       LAppDelegate.prototype.initialize = function () {
-          console.log("LAppDelegate initialize " + this._num);
+          var tempNum = this._num;// 多重canvas的下标
+          console.log("LAppDelegate initialize " + tempNum);
           // キャンバスの取得
-          canvas = document.getElementById("glcanvas_" + this._num);// TODO 序号
+          canvas[tempNum] = document.getElementById("glcanvas_" + tempNum);// TODO 序号
+          console.log("LAppDelegate initialize canvas: " + canvas[tempNum].id);
           // glコンテキストを初期化
-          gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-          if (!gl) {
+          gl[tempNum] = canvas[tempNum].getContext("webgl") || canvas[tempNum].getContext("experimental-webgl");
+          if (!gl[tempNum]) {
               alert("WebGLを初期化できません。ブラウザはサポートしていないようです。");
-              gl = null;
+              gl[tempNum] = null;
               // gl初期化失敗
               return false;
           }
           if (!frameBuffer) {
-              frameBuffer = gl.getParameter(gl.FRAMEBUFFER_BINDING);
+              frameBuffer = gl[tempNum].getParameter(gl[tempNum].FRAMEBUFFER_BINDING);
           }
           // 透過設定
-          gl.enable(gl.BLEND);
-          gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-          var supportTouch = 'ontouchend' in canvas;
+          gl[tempNum].enable(gl[tempNum].BLEND);
+          gl[tempNum].blendFunc(gl[tempNum].SRC_ALPHA, gl[tempNum].ONE_MINUS_SRC_ALPHA);
+          var supportTouch = 'ontouchend' in canvas[tempNum];
           if (supportTouch) {
               // タッチ関連コールバック関数登録
-              canvas.ontouchstart = onTouchBegan;
-              canvas.ontouchmove = onTouchMoved;
-              canvas.ontouchend = onTouchEnded;
-              canvas.ontouchcancel = onTouchCancel;
+              canvas[tempNum].ontouchstart = onTouchBegan;
+              canvas[tempNum].ontouchmove = onTouchMoved;
+              canvas[tempNum].ontouchend = onTouchEnded;
+              canvas[tempNum].ontouchcancel = onTouchCancel;
           }
           else {// TODO 绑定到特定canvas
               var tempNum = this._num;
               if (tempNum == null) { tempNum.fuckshit(); };
-              canvas.addEventListener("mousedown", function () {
+              canvas[tempNum].addEventListener("mousedown", function () {
                   onClickBegan(window.event, tempNum);
               }, false);
-              canvas.addEventListener("mouseup", function () {// 需要执行动画
+              canvas[tempNum].addEventListener("mouseup", function () {// 需要执行动画
                 onClickEnded(window.event, tempNum);
               }, false);
               // document.onmouseenter = onClickBegan;
@@ -150,6 +152,8 @@
        * 実行処理。
        */
       LAppDelegate.prototype.run = function () {
+          var tempNum = this._num;
+          console.log("LAppDelegate run " + tempNum);
           // 自定义切换模型
           var btnChange = document.getElementById("btnChange_" + "0");
           btnChange.addEventListener("click", function () {
@@ -167,17 +171,17 @@
               // 時間更新
               _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].updateTime();
               // 画面の初期化
-              gl.clearColor(0.0, 0.0, 0.0, 0.0);// 背景颜色
+              gl[tempNum].clearColor(0.0, 0.0, 0.0, 0.0);// 背景颜色
               // 深度テストを有効化
-              gl.enable(gl.DEPTH_TEST);
+              gl[tempNum].enable(gl[tempNum].DEPTH_TEST);
               // 近くにある物体は、遠くにある物体を覆い隠す
-              gl.depthFunc(gl.LEQUAL);
+              gl[tempNum].depthFunc(gl[tempNum].LEQUAL);
               // カラーバッファや深度バッファをクリアする
-              gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-              gl.clearDepth(1.0);
+              gl[tempNum].clear(gl[tempNum].COLOR_BUFFER_BIT | gl[tempNum].DEPTH_BUFFER_BIT);
+              gl[tempNum].clearDepth(1.0);
               // 透過設定
-              gl.enable(gl.BLEND);
-              gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+              gl[tempNum].enable(gl[tempNum].BLEND);
+              gl[tempNum].blendFunc(gl[tempNum].SRC_ALPHA, gl[tempNum].ONE_MINUS_SRC_ALPHA);
               // 描画更新
               _this._view.render();
               // ループのために再帰呼び出し
@@ -189,8 +193,10 @@
        * シェーダーを登録する。
        */
       LAppDelegate.prototype.createShader = function () {
+          var tempNum = this._num;
+          console.log("LAppDelegate createShader " + tempNum);
           // バーテックスシェーダーのコンパイル
-          var vertexShaderId = gl.createShader(gl.VERTEX_SHADER);
+          var vertexShaderId = gl[tempNum].createShader(gl[tempNum].VERTEX_SHADER);
           if (vertexShaderId == null) {
               _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("failed to create vertexShader");
               return null;
@@ -204,10 +210,10 @@
               "   gl_Position = vec4(position, 1.0);" +
               "   vuv = uv;" +
               "}";
-          gl.shaderSource(vertexShaderId, vertexShader);
-          gl.compileShader(vertexShaderId);
+          gl[tempNum].shaderSource(vertexShaderId, vertexShader);
+          gl[tempNum].compileShader(vertexShaderId);
           // フラグメントシェーダのコンパイル
-          var fragmentShaderId = gl.createShader(gl.FRAGMENT_SHADER);
+          var fragmentShaderId = gl[tempNum].createShader(gl[tempNum].FRAGMENT_SHADER);
           if (fragmentShaderId == null) {
               _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("failed to create fragmentShader");
               return null;
@@ -219,17 +225,17 @@
               "{" +
               "   gl_FragColor = texture2D(texture, vuv);" +
               "}";
-          gl.shaderSource(fragmentShaderId, fragmentShader);
-          gl.compileShader(fragmentShaderId);
+          gl[tempNum].shaderSource(fragmentShaderId, fragmentShader);
+          gl[tempNum].compileShader(fragmentShaderId);
           // プログラムオブジェクトの作成
-          var programId = gl.createProgram();
-          gl.attachShader(programId, vertexShaderId);
-          gl.attachShader(programId, fragmentShaderId);
-          gl.deleteShader(vertexShaderId);
-          gl.deleteShader(fragmentShaderId);
+          var programId = gl[tempNum].createProgram();
+          gl[tempNum].attachShader(programId, vertexShaderId);
+          gl[tempNum].attachShader(programId, fragmentShaderId);
+          gl[tempNum].deleteShader(vertexShaderId);
+          gl[tempNum].deleteShader(fragmentShaderId);
           // リンク
-          gl.linkProgram(programId);
-          gl.useProgram(programId);
+          gl[tempNum].linkProgram(programId);
+          gl[tempNum].useProgram(programId);
           return programId;
       };
       /**

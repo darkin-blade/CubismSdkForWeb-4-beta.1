@@ -162,7 +162,7 @@
            * @param motionQueueEntry  CubismMotionQueueManagerで管理されているモーション
            */
           CubismMotion.prototype.doUpdateParameters = function (model, userTimeSeconds, fadeWeight, motionQueueEntry) {
-              console.log("CubismMotion doUpdateParameters " + userTimeSeconds);
+            //   console.log("CubismMotion doUpdateParameters " + userTimeSeconds);
               if (this._modelCurveIdEyeBlink == null) {
                   this._modelCurveIdEyeBlink = CubismFramework.getIdManager().getId(EffectNameEyeBlink);
               }

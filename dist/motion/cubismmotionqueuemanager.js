@@ -193,7 +193,7 @@
            * @return  false   モデルへパラメータ値の反映なし(モーションの変化なし)
            */
           CubismMotionQueueManager.prototype.doUpdateMotion = function (model, userTimeSeconds) {
-              console.log("CubismMotionQueueManager doUpdateMotion " + userTimeSeconds);
+            //   console.log("CubismMotionQueueManager doUpdateMotion " + userTimeSeconds);
               userTimeSeconds *= 1;// TODO 加速
               var updated = false;
               // ------- 処理を行う --------
