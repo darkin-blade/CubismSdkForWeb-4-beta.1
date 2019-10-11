@@ -30,6 +30,12 @@
 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 		}
 	};
+	// TODO 为多重canvas提供接口
+	__webpack_require__.e = function(exports, name, num, getter) {
+		if(!__webpack_require__.o(exports, name)) {
+			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+		}
+	};
 	// define __esModule on exports
 	__webpack_require__.r = function(exports) {
 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
