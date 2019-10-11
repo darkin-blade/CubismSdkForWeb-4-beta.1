@@ -68,7 +68,8 @@ var main = "TODO";// 全局主函数,此时未定义.定义位于main.js
 
 $(document).ready(function () {
   console.log("JsManager document ready");
-  divCreate(totalNum);
-  main(totalNum);
-  totalNum ++;
+  divCreate(0);
+  divCreate(1);
+  // main(totalNum);
+  // totalNum ++;
 })
