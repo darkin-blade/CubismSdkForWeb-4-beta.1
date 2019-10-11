@@ -34,7 +34,7 @@
   
   
   var canvas = null;
-  var s_instance = null;
+  var s_instance = new Array();
   var gl = null;
   var frameBuffer = null;
   /**
@@ -45,7 +45,9 @@
       /**
        * コンストラクタ
        */
-      function LAppDelegate() {
+      function LAppDelegate(num) {
+          this._num = num;// TODO
+          console.log("LAppDelegate " + num);
           this._captured = false;
           this._mouseX = 0.0;
           this._mouseY = 0.0;
@@ -60,20 +62,20 @@
        *
        * @return クラスのインスタンス
        */
-      LAppDelegate.getInstance = function () {
-          if (s_instance == null) {
-              s_instance = new LAppDelegate();
+      LAppDelegate.getInstance = function (num) {
+          if (s_instance[num] == null) {
+              s_instance[num] = new LAppDelegate(num);// TODO 后者的num
           }
-          return s_instance;
+          return s_instance[num];
       };
       /**
        * クラスのインスタンス（シングルトン）を解放する。
        */
-      LAppDelegate.releaseInstance = function () {
-          if (s_instance != null) {
-              s_instance.release();
+      LAppDelegate.releaseInstance = function (num) {
+          if (s_instance[num] != null) {
+              s_instance[num].release();
           }
-          s_instance = null;
+          s_instance[num] = null;
       };
       /**
        * APPに必要な物を初期化する。

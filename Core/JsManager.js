@@ -15,8 +15,6 @@ var need_button = 1;
 
 (function() {// 必须立即执行
   console.log("js manager start");
-  divCreate(totalNum);
-  totalNum ++;
 })();
 
 function divCreate(num)
@@ -70,5 +68,7 @@ var main = "TODO";// 全局主函数,此时未定义.定义位于main.js
 
 $(document).ready(function () {
   console.log("JsManager document ready");
-  main();
+  divCreate(totalNum);
+  main(totalNum);
+  totalNum ++;
 })
