@@ -64,6 +64,7 @@
        */
       LAppDelegate.getInstance = function (num) {
           console.log("LAppDelegate getInstance " + num);
+          if (num == null) { num.fuckshit() };// TODO
           if (s_instance[num] == null) {
               s_instance[num] = new LAppDelegate(num);// TODO 后者的num
           }
@@ -113,7 +114,15 @@
               // canvas.onmousemove = onMouseMoved;
               canvas.onmouseup = onClickEnded;// 需要执行动画
               // document.onmouseenter = onClickBegan;
-              document.onmousemove = onMouseMoved;
+            //   document.onmousemove = onMouseMoved;
+
+              document.body.addEventListener("mousemove", function () {
+                  alert(0);
+              }, false);
+              document.body.addEventListener("mousemove", function () {
+                  alert(1);
+              }, false);
+
               document.onmouseleave = onMouseLeave;// 回头
           }
           // AppViewの初期化
@@ -254,6 +263,7 @@
    * 回头,不触发点击事件   
    */
   function onMouseLeave(e) {
+    console.log("lappdelegate onMouseLeave " + this._num);
     if (!LAppDelegate.getInstance()._view) {
         _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
         return;
@@ -286,6 +296,7 @@
     //   if (!LAppDelegate.getInstance()._captured) {// TODO
     //       return;
     //   }
+      console.log("lappdelegate onMouseMoved " + this);
       if (!LAppDelegate.getInstance()._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
