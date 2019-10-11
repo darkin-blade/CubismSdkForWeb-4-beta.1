@@ -113,6 +113,7 @@
        * コンストラクタ
        */
       function LAppModel() {
+          console.log("LAppModel");
           var _this = _super.call(this) || this;
           _this._modelSetting = null;
           _this._modelHomeDir = null;
