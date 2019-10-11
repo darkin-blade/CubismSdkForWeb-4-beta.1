@@ -63,6 +63,7 @@
        * @return クラスのインスタンス
        */
       LAppDelegate.getInstance = function (num) {
+          console.log("LAppDelegate getInstance " + num);
           if (s_instance[num] == null) {
               s_instance[num] = new LAppDelegate(num);// TODO 后者的num
           }
@@ -73,7 +74,7 @@
        */
       LAppDelegate.releaseInstance = function (num) {
           if (s_instance[num] != null) {
-              s_instance[num].release();
+              s_instance[num].release();// TODO 后者不需要加num
           }
           s_instance[num] = null;
       };
@@ -81,8 +82,9 @@
        * APPに必要な物を初期化する。
        */
       LAppDelegate.prototype.initialize = function () {
+          console.log("LAppDelegate initialize " + this._num);
           // キャンバスの取得
-          canvas = document.getElementById("glcanvas_" + "0");// TODO
+          canvas = document.getElementById("glcanvas_" + this._num);// TODO 序号
           // glコンテキストを初期化
           gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
           if (!gl) {

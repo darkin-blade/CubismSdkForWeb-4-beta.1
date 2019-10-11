@@ -131,10 +131,10 @@
         //       _this._gear = new _lappsprite__WEBPACK_IMPORTED_MODULE_6__["LAppSprite"](x, y, fwidth, fheight, textureInfo.id);
         //   };
         //   textureManager.createTextureFromPngFile(resourcesPath + imageName, false, initGearTexture);
-          // シェーダーを作成
-          if (this._programId == null) {
-              this._programId = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["LAppDelegate"].getInstance().createShader();
-          }
+        //   // シェーダーを作成
+        //   if (this._programId == null) {
+        //       this._programId = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["LAppDelegate"].getInstance().createShader();
+        //   }
       };
       /**
        * タッチされた時に呼ばれる。
