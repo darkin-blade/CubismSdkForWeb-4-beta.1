@@ -6,8 +6,8 @@
 
   "use strict";
   __webpack_require__.r(__webpack_exports__);
-  /* harmony export (binding) */ // TODO __webpack_require__.d(__webpack_exports__, "s_instance", function() { return s_instance; });
-  /* harmony export (binding) */ // TODO __webpack_require__.d(__webpack_exports__, "LAppLive2DManager", function() { return LAppLive2DManager; });
+  /* harmony export (binding) */ // TODO 感觉没用 __webpack_require__.d(__webpack_exports__, "s_instance", function() { return s_instance; });
+  /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LAppLive2DManager", function() { return LAppLive2DManager; });
   /* harmony import */ var _Framework_math_cubismmatrix44__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../Framework/math/cubismmatrix44 */ "./Framework/math/cubismmatrix44.ts");
   /* harmony import */ var _Framework_type_csmvector__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../Framework/type/csmvector */ "./Framework/type/csmvector.ts");
   /* harmony import */ var _lappmodel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./lappmodel */ "./Sample/TypeScript/Demo/src/lappmodel.ts");
