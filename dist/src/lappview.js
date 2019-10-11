@@ -38,7 +38,9 @@
       /**
        * コンストラクタ
        */
-      function LAppView() {
+      function LAppView(num) {
+          this._num = num;// TODO 多重canvas
+          console.log("LAppView " + this._num);
           this._programId = null;
           this._back = null;
           this._gear = null;
@@ -97,7 +99,7 @@
               this._gear.render(this._programId);
           }
           _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["gl"].flush();
-          var live2DManager = _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_4__["LAppLive2DManager"].getInstance();
+          var live2DManager = _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_4__["LAppLive2DManager"].getInstance(this._num);
           live2DManager.onUpdate();
       };
       /**
@@ -155,7 +157,7 @@
           var viewX = this.transformViewX(this._touchManager.getX());
           var viewY = this.transformViewY(this._touchManager.getY());
           this._touchManager.touchesMoved(pointX, pointY);
-          var live2DManager = _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_4__["LAppLive2DManager"].getInstance();
+          var live2DManager = _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_4__["LAppLive2DManager"].getInstance(this._num);
           live2DManager.onDrag(viewX, viewY);
       };
       /**
@@ -166,7 +168,7 @@
        */
       LAppView.prototype.onTouchesEnded = function (pointX, pointY) {
           // タッチ終了
-          var live2DManager = _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_4__["LAppLive2DManager"].getInstance();
+          var live2DManager = _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_4__["LAppLive2DManager"].getInstance(this._num);
           live2DManager.onDrag(0.0, 0.0);
           {
               // シングルタップ

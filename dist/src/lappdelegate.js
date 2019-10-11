@@ -53,7 +53,7 @@
           this._mouseY = 0.0;
           this._isEnd = false;
           this._cubismOption = new _Framework_live2dcubismframework__WEBPACK_IMPORTED_MODULE_0__["Option"]();
-          this._view = new _lappview__WEBPACK_IMPORTED_MODULE_2__["LAppView"]();
+          this._view = new _lappview__WEBPACK_IMPORTED_MODULE_2__["LAppView"](this._num);// TODO 给LAppView标号
           this._textureManager = new _lapptexturemanager__WEBPACK_IMPORTED_MODULE_4__["LAppTextureManager"]();
       }
       /**
@@ -109,21 +109,22 @@
               canvas.ontouchcancel = onTouchCancel;
           }
           else {// TODO 绑定到特定canvas
+              var tempNum = this._num;
+              if (tempNum == null) { tempNum.fuckshit(); };
               canvas.addEventListener("mousedown", function () {
-                  onClickBegan(window.event, this._num);
+                  onClickBegan(window.event, tempNum);
               }, false);
-              // canvas.onmousemove = onMouseMoved;
               canvas.addEventListener("mouseup", function () {// 需要执行动画
-                onClickEnded(window.event, this._num);
+                onClickEnded(window.event, tempNum);
               }, false);
               // document.onmouseenter = onClickBegan;
 
               document.body.addEventListener("mousemove", function () {// TODO
-                  onMouseMoved(window.event, this._num);
+                  onMouseMoved(window.event, tempNum);
               }, false);// 全局鼠标跟随
 
               document.body.addEventListener("mouseleave", function () {// TODO
-                  onMouseLeave(window.event, this._num);
+                  onMouseLeave(window.event, tempNum);
               }, false);// 回头
           }
           // AppViewの初期化
