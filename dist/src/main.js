@@ -16,7 +16,7 @@
   
   console.log("main define");
   /* var */ main = function (num) {// 使用JsManager的全局变量,将其改成函数
-    // num:用于多重canvas
+      // num:用于多重canvas
       // create the application instance
       if (_lappdelegate__WEBPACK_IMPORTED_MODULE_0__["LAppDelegate"].getInstance(num).initialize() == false) {
           return;

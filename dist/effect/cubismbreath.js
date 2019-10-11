@@ -63,6 +63,7 @@
            */
           CubismBreath.prototype.updateParameters = function (model, deltaTimeSeconds) {
               this._currentTime += deltaTimeSeconds;
+            //   console.log("CubismBreath updateParameters " + this._currentTime);// TODO
               var t = this._currentTime * 2.0 * 3.14159;
               for (var i = 0; i < this._breathParameters.getSize(); ++i) {
                   var data = this._breathParameters.at(i);
