@@ -15,18 +15,19 @@
    */
   
   console.log("main define");
-  /* var */ main = function () {// 使用JsManager的全局变量,将其改成函数
+  /* var */ main = function (num) {// 使用JsManager的全局变量,将其改成函数
+    // num:用于多重canvas
       // create the application instance
-      if (_lappdelegate__WEBPACK_IMPORTED_MODULE_0__["LAppDelegate"].getInstance().initialize() == false) {
+      if (_lappdelegate__WEBPACK_IMPORTED_MODULE_0__["LAppDelegate"].getInstance(num).initialize() == false) {
           return;
       }
-      _lappdelegate__WEBPACK_IMPORTED_MODULE_0__["LAppDelegate"].getInstance().run();
+      _lappdelegate__WEBPACK_IMPORTED_MODULE_0__["LAppDelegate"].getInstance(num).run();
   };
   // main();// 入口函数
   /**
    * 終了時の処理
    */
-  window.onbeforeunload = function () {
+  window.onbeforeunload = function () {// TODO 不知道如何对应到canvas
       _lappdelegate__WEBPACK_IMPORTED_MODULE_0__["LAppDelegate"].releaseInstance();
   };
   

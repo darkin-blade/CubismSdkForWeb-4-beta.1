@@ -66,7 +66,7 @@ function myDrag()
 
 // === 针对4.0.0的修改 ===
 
-var main = "caonima";// 全局主函数,此时未定义
+var main = "TODO";// 全局主函数,此时未定义.定义位于main.js
 
 $(document).ready(function () {
   console.log("JsManager document ready");
