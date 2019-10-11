@@ -118,11 +118,11 @@
               }, false);
               // document.onmouseenter = onClickBegan;
 
-              document.body.addEventListener("mousemove", function () {
+              document.body.addEventListener("mousemove", function () {// TODO
                   onMouseMoved(window.event, this._num);
               }, false);// 全局鼠标跟随
 
-              document.body.addEventListener("mouseleave", function () {
+              document.body.addEventListener("mouseleave", function () {// TODO
                   onMouseLeave(window.event, this._num);
               }, false);// 回头
           }
@@ -263,24 +263,24 @@
   /**
    * 回头,不触发点击事件   
    */
-  function onMouseLeave(e) {
+  function onMouseLeave(e, num) {
     console.log("lappdelegate onMouseLeave " + this._num);
-    if (!LAppDelegate.getInstance()._view) {
+    if (!LAppDelegate.getInstance(num)._view) {
         _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
         return;
     }
-    var live2DManager = _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_5__["LAppLive2DManager"].getInstance();
+    var live2DManager = _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_5__["LAppLive2DManager"].getInstance();// TODO 回头的实现
     live2DManager.onDrag(0.0, 0.0);
   }
   /**
    * クリックしたときに呼ばれる。
    */
-  function onClickBegan(e) {
-      if (!LAppDelegate.getInstance()._view) {
+  function onClickBegan(e, num) {
+      if (!LAppDelegate.getInstance(num)._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
       }
-    //   LAppDelegate.getInstance()._captured = true;
+    //   LAppDelegate.getInstance(num)._captured = true;
     //   var posX = e.pageX;
     //   var posY = e.pageY;
       // 修正鼠标点击位置判定
@@ -288,17 +288,17 @@
       var posX = e.clientX - rect.left;
       var posY = e.clientY - rect.top;
     //   console.log("lappdelegate onClickBegan (" + posX + ", " + posY + ")");
-      LAppDelegate.getInstance()._view.onTouchesBegan(posX, posY);
+      LAppDelegate.getInstance(num)._view.onTouchesBegan(posX, posY);
   }
   /**
    * マウスポインタが動いたら呼ばれる。
    */
-  function onMouseMoved(e) {
-    //   if (!LAppDelegate.getInstance()._captured) {// TODO
+  function onMouseMoved(e, num) {
+    //   if (!LAppDelegate.getInstance(num)._captured) {// TODO
     //       return;
     //   }
       console.log("lappdelegate onMouseMoved " + this);
-      if (!LAppDelegate.getInstance()._view) {
+      if (!LAppDelegate.getInstance(num)._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
       }
@@ -310,14 +310,14 @@
       var posX = e.clientX - tempDrag.offsetLeft;
       var posY = e.clientY - tempDrag.offsetTop;
     //   console.log("lappdelegate onMouseMoved (" + posX + ", " + posY + "), target: " + e.target);
-      LAppDelegate.getInstance()._view.onTouchesMoved(posX, posY);
+      LAppDelegate.getInstance(num)._view.onTouchesMoved(posX, posY);
   }
   /**
    * クリックが終了したら呼ばれる。
    */
-  function onClickEnded(e) {
-    //   LAppDelegate.getInstance()._captured = false;// TODO
-      if (!LAppDelegate.getInstance()._view) {
+  function onClickEnded(e, num) {
+    //   LAppDelegate.getInstance(num)._captured = false;// TODO
+      if (!LAppDelegate.getInstance(num)._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
       }
@@ -325,64 +325,64 @@
       var posX = e.clientX - rect.left;
       var posY = e.clientY - rect.top;
       console.log("lappdelegate onClickEnded (" + posX + ", " + posY + ")");
-      LAppDelegate.getInstance()._view.onTouchesEnded(posX, posY);
+      LAppDelegate.getInstance(num)._view.onTouchesEnded(posX, posY);
   }
   /**
    * タッチしたときに呼ばれる。
    */
-  function onTouchBegan(e) {
-      if (!LAppDelegate.getInstance()._view) {
+  function onTouchBegan(e, num) {
+      if (!LAppDelegate.getInstance(num)._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
       }
-    //   LAppDelegate.getInstance()._captured = true;
+    //   LAppDelegate.getInstance(num)._captured = true;
       var posX = e.changedTouches[0].pageX;
       var posY = e.changedTouches[0].pageY;
-      LAppDelegate.getInstance()._view.onTouchesBegan(posX, posY);
+      LAppDelegate.getInstance(num)._view.onTouchesBegan(posX, posY);
   }
   /**
    * スワイプすると呼ばれる。
    */
-  function onTouchMoved(e) {
-      if (!LAppDelegate.getInstance()._captured) {
+  function onTouchMoved(e, num) {
+      if (!LAppDelegate.getInstance(num)._captured) {
           return;
       }
-      if (!LAppDelegate.getInstance()._view) {
+      if (!LAppDelegate.getInstance(num)._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
       }
       var rect = e.target.getBoundingClientRect();
       var posX = e.changedTouches[0].clientX - rect.left;
       var posY = e.changedTouches[0].clientY - rect.top;
-      LAppDelegate.getInstance()._view.onTouchesMoved(posX, posY);
+      LAppDelegate.getInstance(num)._view.onTouchesMoved(posX, posY);
   }
   /**
    * タッチが終了したら呼ばれる。
    */
-  function onTouchEnded(e) {
-      LAppDelegate.getInstance()._captured = false;
-      if (!LAppDelegate.getInstance()._view) {
+  function onTouchEnded(e, num) {
+      LAppDelegate.getInstance(num)._captured = false;
+      if (!LAppDelegate.getInstance(num)._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
       }
       var rect = e.target.getBoundingClientRect();
       var posX = e.changedTouches[0].clientX - rect.left;
       var posY = e.changedTouches[0].clientY - rect.top;
-      LAppDelegate.getInstance()._view.onTouchesEnded(posX, posY);
+      LAppDelegate.getInstance(num)._view.onTouchesEnded(posX, posY);
   }
   /**
    * タッチがキャンセルされると呼ばれる。
    */
-  function onTouchCancel(e) {
-      LAppDelegate.getInstance()._captured = false;
-      if (!LAppDelegate.getInstance()._view) {
+  function onTouchCancel(e, num) {
+      LAppDelegate.getInstance(num)._captured = false;
+      if (!LAppDelegate.getInstance(num)._view) {
           _lapppal__WEBPACK_IMPORTED_MODULE_3__["LAppPal"].printLog("view notfound");
           return;
       }
       var rect = e.target.getBoundingClientRect();
       var posX = e.changedTouches[0].clientX - rect.left;
       var posY = e.changedTouches[0].clientY - rect.top;
-      LAppDelegate.getInstance()._view.onTouchesEnded(posX, posY);
+      LAppDelegate.getInstance(num)._view.onTouchesEnded(posX, posY);
   }
   
   
