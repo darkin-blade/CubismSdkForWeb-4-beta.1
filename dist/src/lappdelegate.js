@@ -54,7 +54,7 @@
           this._isEnd = false;
           this._cubismOption = new _Framework_live2dcubismframework__WEBPACK_IMPORTED_MODULE_0__["Option"]();
           this._view = new _lappview__WEBPACK_IMPORTED_MODULE_2__["LAppView"](this._num);// TODO 给LAppView标号
-          this._textureManager = new _lapptexturemanager__WEBPACK_IMPORTED_MODULE_4__["LAppTextureManager"]();
+          this._textureManager = new _lapptexturemanager__WEBPACK_IMPORTED_MODULE_4__["LAppTextureManager"](this._num);
       }
       /**
        * クラスのインスタンス（シングルトン）を返す。

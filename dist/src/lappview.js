@@ -84,24 +84,22 @@
           this._gear = null;
           this._back.release();
           this._back = null;
-          var tempGl = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["gl"];
           if (this._num == null) { this._num.fuckshit() };
-          tempGl[this._num].deleteProgram(this._programId);
+          _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["gl"][this._num].deleteProgram(this._programId);
           this._programId = null;
       };
       /**
        * 描画する。
        */
       LAppView.prototype.render = function () {
-          var tempGl = _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["gl"];
-          tempGl[this._num].useProgram(this._programId);
+          _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["gl"][this._num].useProgram(this._programId);
           if (this._back) {
               this._back.render(this._programId);
           }
           if (this._gear) {
               this._gear.render(this._programId);
           }
-          tempGl[this._num].flush();
+          _lappdelegate__WEBPACK_IMPORTED_MODULE_5__["gl"][this._num].flush();
           var live2DManager = _lapplive2dmanager__WEBPACK_IMPORTED_MODULE_4__["LAppLive2DManager"].getInstance(this._num);
           live2DManager.onUpdate();
       };

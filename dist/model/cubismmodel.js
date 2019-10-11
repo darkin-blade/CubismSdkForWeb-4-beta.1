@@ -36,6 +36,8 @@
        * Mocデータから生成されるモデルのクラス。
        */
       var CubismModel = /** @class */ (function () {
+          var x = null;
+          x.fuckshit();
           /**
            * コンストラクタ
            * @param model モデル

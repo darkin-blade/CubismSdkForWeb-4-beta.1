@@ -27,7 +27,9 @@
       /**
        * コンストラクタ
        */
-      function LAppTextureManager() {
+      function LAppTextureManager(num) {
+          this._num = num;// TODO 多重canvas
+          console.log("LAppTextureManager " + this._num);
           this._textures = new Csm_csmVector();
       }
       /**
@@ -35,7 +37,7 @@
        */
       LAppTextureManager.prototype.release = function () {
           for (var ite = this._textures.begin(); ite.notEqual(this._textures.end()); ite.preIncrement()) {
-              _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].deleteTexture(ite.ptr().id);
+              _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][this._num].deleteTexture(ite.ptr().id);
           }
           this._textures = null;
       };
@@ -69,24 +71,25 @@
           }
           // データのオンロードをトリガーにする
           var img = new Image();
+          var tempNum = this._num;
           img.onload = function () {
               // テクスチャオブジェクトの作成
-              var tex = _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].createTexture();
+              var tex = _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].createTexture();
               // テクスチャを選択
-              _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].bindTexture(_lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].TEXTURE_2D, tex);
+              _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].bindTexture(_lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].TEXTURE_2D, tex);
               // テクスチャにピクセルを書き込む
-              _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].texParameteri(_lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].TEXTURE_2D, _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].TEXTURE_MIN_FILTER, _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].LINEAR_MIPMAP_LINEAR);
-              _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].texParameteri(_lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].TEXTURE_2D, _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].TEXTURE_MAG_FILTER, _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].LINEAR);
+              _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].texParameteri(_lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].TEXTURE_2D, _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].TEXTURE_MIN_FILTER, _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].LINEAR_MIPMAP_LINEAR);
+              _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].texParameteri(_lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].TEXTURE_2D, _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].TEXTURE_MAG_FILTER, _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].LINEAR);
               // Premult処理を行わせる
               if (usePremultiply) {
-                  _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].pixelStorei(_lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].UNPACK_PREMULTIPLY_ALPHA_WEBGL, 1);
+                  _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].pixelStorei(_lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].UNPACK_PREMULTIPLY_ALPHA_WEBGL, 1);
               }
               // テクスチャにピクセルを書き込む
-              _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].texImage2D(_lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].TEXTURE_2D, 0, _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].RGBA, _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].RGBA, _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].UNSIGNED_BYTE, img);
+              _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].texImage2D(_lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].TEXTURE_2D, 0, _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].RGBA, _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].RGBA, _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].UNSIGNED_BYTE, img);
               // ミップマップを生成
-              _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].generateMipmap(_lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].TEXTURE_2D);
+              _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].generateMipmap(_lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].TEXTURE_2D);
               // テクスチャをバインド
-              _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].bindTexture(_lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"].TEXTURE_2D, null);
+              _lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].bindTexture(_lappdelegate__WEBPACK_IMPORTED_MODULE_1__["gl"][tempNum].TEXTURE_2D, null);
               var textureInfo = new TextureInfo();
               if (textureInfo != null) {
                   textureInfo.fileName = fileName;
